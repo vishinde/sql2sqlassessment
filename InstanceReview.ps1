@@ -1,6 +1,6 @@
 ﻿Param(
-[Parameter][string]$user = "userfordma",
-[Parameter][string]$pwd = "P@ssword135"
+[string]$user = "userfordma",
+[string]$pwd = "P@ssword135"
 )
 
 
