@@ -1,2 +1,3 @@
-InstanceName,Port
-localhost,1433
+InstanceName
+MS-SERVER1
+MS-SERVER1\TESTINSTANCE

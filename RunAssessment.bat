@@ -1,1 +1,1 @@
-PowerShell -NoProfile -ExecutionPolicy Bypass -Command "& '.\InstanceReview.ps1'"
+PowerShell -nologo -NoExit -NoProfile -ExecutionPolicy Bypass -File ".\InstanceReview.ps1"

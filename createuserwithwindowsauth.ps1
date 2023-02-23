@@ -1,5 +1,5 @@
 $objs = Import-Csv -Delimiter "," sqlsrv.csv
-$foldername = ""
 foreach($item in $objs) {
-    sqlcmd -H $sqlsrv -i prereq_createsa.sql
+    $sqlsrv = $item.InstanceName
+    sqlcmd -S $sqlsrv -i prereq_createsa.sql -m 1
 }
