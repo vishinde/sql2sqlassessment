@@ -80,6 +80,13 @@ IF @CLREnabledUsed > 0 SET @IS_@CLREnabledUsed = 'Yes'  ELSE  SET @IS_@CLREnable
 INSERT INTO #FeaturesEnabled VALUES (
 'CLR Enabled', @IS_@CLREnabledUsed, @CLREnabledUsed );
 
+--Linked Servers
+DECLARE @LinkedSrvUsed as INT, @IS_LinkedSrvUsed as NVARCHAR(4);
+select @LinkedSrvUsed = count(*) from sys.servers where is_linked = 1
+IF @LinkedSrvUsed > 0 SET @IS_LinkedSrvUsed = 'Yes'  ELSE  SET @IS_LinkedSrvUsed = 'No' ;
+INSERT INTO #FeaturesEnabled VALUES (
+'Linked Servers Used', @IS_LinkedSrvUsed, @LinkedSrvUsed );
+
 --Policy based management
 USE msdb;
 DECLARE @PoliciesEnabled_value as INT, @IS_PoliciesEnabled as NVARCHAR(4)

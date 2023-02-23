@@ -28,10 +28,12 @@ foreach($item in $objs) {
     $compFileName = 'opdb' + '_' + 'ComponentsInstalled' + '_' + $dbversion + '_' + $machinename + '_' + $dbname + '_' + $instancename + '_' + $current_ts + '.csv'
     $srvFileName = 'opdb' + '_' + 'ServerProperties' + '_' + $dbversion + '_' + $machinename + '_' + $dbname + '_' + $instancename + '_' + $current_ts + '.csv'
     $blockingFeatures = 'opdb' + '_' + 'BlockingFeatures' + '_' + $dbversion + '_' + $machinename + '_' + $dbname + '_' + $instancename + '_' + $current_ts + '.csv'
+    $linkedServers = 'opdb' + '_' + 'LinkedServers' + '_' + $dbversion + '_' + $machinename + '_' + $dbname + '_' + $instancename + '_' + $current_ts + '.csv'
 
     sqlcmd -S $sqlsrv -i ComponentsInstalled.sql -U $user -P $pwd -s"|" | findstr /v /c:"---" > $foldername\$compFileName
     sqlcmd -S $sqlsrv -i ServerProperties.sql -U $user -P $pwd -s"|" | findstr /v /c:"---" > $foldername\$srvFileName
     sqlcmd -S $sqlsrv -i Features.sql -U $user -P $pwd -m 1 -s"|" | findstr /v /c:"---" > $foldername\$blockingFeatures
+    sqlcmd -S $sqlsrv -i LinkedServers.sql -U $user -P $pwd -m 1 -s"|" | findstr /v /c:"---" > $foldername\$linkedServers
 
     $zippedopfolder = $foldername + '.zip'
     Compress-Archive -Path $foldername -DestinationPath $zippedopfolder
